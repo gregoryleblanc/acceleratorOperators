@@ -111,7 +111,7 @@ public class User {
     }
 
     public Boolean isActive() {
-        if (this.status == "Active"){
+        if (this.status.equals("Active")) {
             return true;
         }
         else {
