@@ -109,4 +109,13 @@ public class User {
     public LocalDateTime getCreated () {
         return entered;
     }
+
+    public Boolean isActive() {
+        if (this.status == "Active"){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
