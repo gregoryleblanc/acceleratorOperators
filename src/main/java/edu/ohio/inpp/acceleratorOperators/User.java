@@ -14,24 +14,24 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 
-    private Integer id;
+    private Integer seq_nmbr;
     private String name;
-    private String fullName;
+    private String fname;
     private String email;
-    private String altEmail;
+    private String altemail;
     private String phones;
     private String status;
-    private String officeAddress;
-    private String homeAddress;
-    private LocalDateTime lasteUpdated;
-    private LocalDateTime created;
+    private String office;
+    private String home;
+    private LocalDateTime updated;
+    private LocalDateTime entered;
 
     public Integer getId() {
-        return id;
+        return seq_nmbr;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.seq_nmbr = id;
     }
 
     public String getName() {
@@ -43,11 +43,11 @@ public class User {
     }
 
     public void setFullName (String fullName) {
-        this.fullName = fullName;
+        this.fname = fullName;
     }
 
     public String getFullName () {
-        return fullName;
+        return fname;
     }
 
     public String getEmail () {
@@ -59,11 +59,11 @@ public class User {
     }
 
     public String getAltEmail () {
-        return altEmail;
+        return altemail;
     }
 
-    public void setAltEmail (String altEmail) {
-        this.altEmail = altEmail;
+    public void setAltEmail (String altemail) {
+        this.altemail = altemail;
     }
 
     public String getPhones () {
@@ -83,30 +83,30 @@ public class User {
     }
 
     public String getOfficeAddress () {
-        return officeAddress;
+        return office;
     }
 
     public void setOfficeAddress (String officeAddress) {
-        this.officeAddress = officeAddress;
+        this.office = officeAddress;
     }
 
     public String getHomeAddress () {
-        return homeAddress;
+        return home;
     }
 
     public void setHomeAddress (String homeAddress) {
-        this.homeAddress = homeAddress;
+        this.home = homeAddress;
     }
 
     public LocalDateTime getLastUpdated () {
-        return lasteUpdated;
+        return updated;
     }
 
     public void setLastUpdated () {
-        this.lasteUpdated = LocalDateTime.now();
+        this.updated = LocalDateTime.now();
     }
 
     public LocalDateTime getCreated () {
-        return created;
+        return entered;
     }
 }
