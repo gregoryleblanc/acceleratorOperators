@@ -9,11 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 
 @Entity
 
-public class Certifications {
+public class Certification {
+    // These three lines are linked together to tell SpringBoot that the
+    // ID field is the variable here, and that it is auto generated.  
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Integer seq_nmbr;
+
     private String certification;
     private String shortDesc;
     private Integer exp_months;
