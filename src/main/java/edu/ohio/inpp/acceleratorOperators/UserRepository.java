@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 // import com.example.accessingdatamysql.User;
 import edu.ohio.inpp.acceleratorOperators.User;
@@ -18,30 +20,34 @@ import edu.ohio.inpp.acceleratorOperators.User;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-    // final WebResource service;
-    // URI mariadbURI;
-    String myDriver = "org.mariadb.jdbc.Driver";
-    String myUrl = "jdbc:mariadb://localhost/tandem";
-    String myUser = "edwards";
-    String myPassword = "Edwards";
+    // // final WebResource service;
+    // // URI mariadbURI;
+    // String myDriver = "org.mariadb.jdbc.Driver";
+    // String myUrl = "jdbc:mariadb://localhost/tandem";
+    // String myUser = "edwards";
+    // String myPassword = "Edwards";
 
-    // used to fetch a count of the "Active" operators in the database.
-    public default long countActive() {
-        long activeCount = 0;
-        try {
-            Class.forName(myDriver);
-            Connection getActive = DriverManager.getConnection(myUrl, myUser, myPassword);
-            String activeQuery = "SELECT COUNT(*) AS rowcount FROM operators WHERE status = 'Active';";
-            Statement activeStatement = getActive.createStatement();
-            ResultSet activeResult = activeStatement.executeQuery(activeQuery);
-            activeResult.next();
-            activeCount = activeResult.getLong("rowcount");
-            activeStatement.close();
-        } catch (Exception e){
-            System.err.println("Got an exception! ");
-            System.err.println(e.getMessage());
-        }
-        return activeCount;
-    };
+    // // used to fetch a count of the "Active" operators in the database.
+    // public default long countActive() {
+    //     long activeCount = 0;
+    //     try {
+    //         Class.forName(myDriver);
+    //         Connection getActive = DriverManager.getConnection(myUrl, myUser, myPassword);
+    //         String activeQuery = "SELECT COUNT(*) AS rowcount FROM operators WHERE status = 'Active';";
+    //         Statement activeStatement = getActive.createStatement();
+    //         ResultSet activeResult = activeStatement.executeQuery(activeQuery);
+    //         activeResult.next();
+    //         activeCount = activeResult.getLong("rowcount");
+    //         activeStatement.close();
+    //     } catch (Exception e){
+    //         System.err.println("Got an exception! ");
+    //         System.err.println(e.getMessage());
+    //     }
+    //     return activeCount;
+    // }
+
+    long countByStatus (String status);
+
+    Iterable<User> findByStatus (String status);
 
 }

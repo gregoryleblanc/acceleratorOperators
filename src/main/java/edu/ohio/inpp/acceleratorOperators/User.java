@@ -11,10 +11,12 @@ import javax.persistence.Table;
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name ="operators")
 public class User {
+    // These three lines are linked together to tell SpringBoot that the
+    // ID field is the variable here, and that it is auto generated.  
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-
     private Integer seq_nmbr;
+    
     private String name;
     private String fname;
     private String email;
@@ -30,9 +32,9 @@ public class User {
         return seq_nmbr;
     }
 
-    public void setId(Integer id) {
-        this.seq_nmbr = id;
-    }
+    // public void setId(Integer id) {
+    //     this.seq_nmbr = id;
+    // }
 
     public String getName() {
         return name;
