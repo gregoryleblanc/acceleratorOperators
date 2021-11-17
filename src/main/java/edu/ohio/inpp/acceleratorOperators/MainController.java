@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMethod;
+// import org.springframework.web.bind.annotation.RequestBody;
+// import org.springframework.web.bind.annotation.RequestMethod;
 
 
 
@@ -20,7 +20,17 @@ public class MainController {
   private UserRepository userRepository;
   @Autowired
   private CertificationRepository certRepository;
+  @Autowired
+  private CanCertifyRepository canCertifyRepository;
+  @Autowired 
+  private OpTrainingRepository opTrainingRepository;
+  @Autowired
+  private TrainerRepository trainerRepository;
+  @Autowired
+  private AnnualRadSafetyRepository annualRadSafetyRepository;
 
+  //Operators Section
+  ////////////////////////////////////////////////
   @PostMapping(path="/ops/add") // Map ONLY POST Requests
   public @ResponseBody String addNewUser (@RequestParam String name
       , @RequestParam String email) {
@@ -50,9 +60,39 @@ public class MainController {
     return userRepository.findByStatus("Active");
   }
 
-  @GetMapping(path ="/certs/all")
+  //Certification Section
+  ////////////////////////////////////////////////
+  @GetMapping(path="/certs/all")
   public @ResponseBody Iterable<Certification> getAllCerts() {
     return certRepository.findAll();
   }  
-  
+
+  //CanCertify Section
+  ////////////////////////////////////////////////
+  @GetMapping(path="/cancertify/all")
+  public @ResponseBody Iterable<CanCertify> getCanCertify() {
+    return canCertifyRepository.findAll();
+  }
+
+  //OpTraining Section
+  ////////////////////////////////////////////////
+  @GetMapping(path="/optraining/all")
+  public @ResponseBody Iterable<OpTraining> getOpTraining() {
+    return opTrainingRepository.findAll();
+  }
+
+  //Trainer Section
+  ////////////////////////////////////////////////
+  @GetMapping(path="/trainer/all")
+  public @ResponseBody Iterable<Trainer> getTrainer() {
+    return trainerRepository.findAll();
+  }
+
+  //AnnualRadSafety Section
+  ////////////////////////////////////////////////
+  @GetMapping(path="/radsafety/all")
+  public @ResponseBody Iterable<AnnualRadSafety> getRadSafety() {
+    return annualRadSafetyRepository.findAll();
+  }
+
 }

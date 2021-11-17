@@ -1,14 +1,16 @@
 package edu.ohio.inpp.acceleratorOperators;
 
-import javax.annotation.Generated;
+// import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.data.jpa.repository.Query;
 
 @Entity
-
+@Table(name="certifications")
 public class Certification {
     // These three lines are linked together to tell SpringBoot that the
     // ID field is the variable here, and that it is auto generated.  

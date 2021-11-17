@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity // This tells Hibernate to make a table out of this class
+@Table(name="trainers")
 public class Trainer {
     // These three lines are linked together to tell SpringBoot that the
     // ID field is the variable here, and that it is auto generated.  
