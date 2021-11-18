@@ -28,10 +28,12 @@ public class MainController {
   private TrainerRepository trainerRepository;
   @Autowired
   private AnnualRadSafetyRepository annualRadSafetyRepository;
+  @Autowired
+  private OperatorRepository operatorRepository;
 
   //Operators Section
   ////////////////////////////////////////////////
-  @PostMapping(path="/ops/add") // Map ONLY POST Requests
+  @PostMapping(path="/user/add") // Map ONLY POST Requests
   public @ResponseBody String addNewUser (@RequestParam String name
       , @RequestParam String email) {
     // @ResponseBody means the returned String is the response, not a view name
@@ -44,18 +46,18 @@ public class MainController {
     return "Saved";
   }
 
-  @GetMapping(path="/ops/all")
+  @GetMapping(path="/user/all")
   public @ResponseBody Iterable<User> getAllUsers() {
     // This returns a JSON or XML with the users
     return userRepository.findAll();
   }
 
-  @GetMapping(path="/ops/count")
+  @GetMapping(path="/user/count")
   public @ResponseBody Long countUsers() {
     return userRepository.countByStatus("Active");
   }
 
-  @GetMapping(path="/ops/active")
+  @GetMapping(path="/user/active")
   public @ResponseBody Iterable<User> getActive() {
     return userRepository.findByStatus("Active");
   }
@@ -93,6 +95,13 @@ public class MainController {
   @GetMapping(path="/radsafety/all")
   public @ResponseBody Iterable<AnnualRadSafety> getRadSafety() {
     return annualRadSafetyRepository.findAll();
+  }
+
+  //Real Operator Section
+  ////////////////////////////////////////////////
+  @GetMapping(path="/operator/all")
+  public @ResponseBody Iterable<User> getRealOperator() {
+    return operatorRepository.findAll();
   }
 
 }
